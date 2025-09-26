@@ -5,9 +5,18 @@ export default {
   input: 'src/ultimate-netatmo-card.ts',
   output: {
     file: 'dist/ultimate-netatmo-card.js',
-    format: 'es'
+    format: 'es',
+    sourcemap: true
   },
-  plugins: [resolve(), typescript()]
+  plugins: [
+    resolve({
+      browser: true,
+      exportConditions: ['default', 'module', 'import']
+    }),
+    typescript({
+      tsconfig: './tsconfig.json'
+    })
+  ]
 };
 
 
