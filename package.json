@@ -1,1 +1,14 @@
+{
+  "name": "ultimate-netatmo-card",
+  "version": "1.0.0",
+  "main": "dist/ultimate-netatmo-card.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "lit": "^2.0.0",
+    "rollup": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}
 
