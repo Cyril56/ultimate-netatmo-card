@@ -12,7 +12,7 @@ export interface CardConfig {
   };
 }
 
-class UltimateNetatmoCard extends LitElement {
+export class UltimateNetatmoCard extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private config!: CardConfig;
 
