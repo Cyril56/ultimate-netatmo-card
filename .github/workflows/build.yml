@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          # cache: 'npm'   # supprimé car pas de package-lock.json
 
       - name: Install dependencies
         run: npm install
@@ -34,3 +35,4 @@ jobs:
         with:
           name: ultimate-netatmo-card-dist
           path: dist/
+
