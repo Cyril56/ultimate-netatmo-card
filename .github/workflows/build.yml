@@ -21,23 +21,18 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      # ⚠️ Synchroniser package-lock.json avec package.json
       - name: Update package-lock.json
         run: npm install
 
-      # Installer toutes les dépendances de façon propre
       - name: Install dependencies
         run: npm ci
 
-      # Compiler le bundle avec Rollup
       - name: Build project
         run: npm run build
 
-      # Vérifier le contenu du dossier dist/
       - name: Show dist content
         run: ls -R dist
 
-      # Upload du bundle comme artefact
       - name: Upload dist files
         uses: actions/upload-artifact@v4
         with:
