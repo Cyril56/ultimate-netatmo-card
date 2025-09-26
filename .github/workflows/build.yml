@@ -1,9 +1,6 @@
 name: Build
 
 on:
-  workflow_dispatch:
-
-on:
   push:
     branches:
       - main
@@ -14,23 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Récupère ton code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      # Configure Node.js avec cache npm
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
 
+      # Installe les dépendances
       - name: Install dependencies
         run: npm ci
 
+      # Compile avec Rollup (défini dans package.json)
       - name: Build project
         run: npm run build
 
+      # Vérifie que le fichier de sortie existe
+      - name: Check build output
+        run: ls -R dist
+
+      # Sauvegarde dist/ comme artefact (utile pour télécharger)
       - name: Upload dist files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: ultimate-netatmo-card-dist
           path: dist/
