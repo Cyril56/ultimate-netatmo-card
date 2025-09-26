@@ -30,8 +30,14 @@ jobs:
       - name: Build with Rollup
         run: npm run build
 
-      - name: Move compiled file to root
-        run: mv dist/ultimate-netatmo-card.js ./ultimate-netatmo-card.js
+      - name: Upload compiled file to release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          files: dist/ultimate-netatmo-card.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
