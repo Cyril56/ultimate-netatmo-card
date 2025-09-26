@@ -1,0 +1,27 @@
+{
+  "name": "ultimate-netatmo-card",
+  "version": "1.0.0",
+  "description": "Home Assistant custom card for Netatmo",
+  "main": "dist/ultimate-netatmo-card.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [
+    "home-assistant",
+    "lovelace",
+    "custom-card",
+    "netatmo"
+  ],
+  "author": "Cyril56",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^3.29.0",
+    "typescript": "^5.2.0"
+  }
+}
