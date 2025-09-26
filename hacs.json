@@ -1,0 +1,12 @@
+{
+  "name": "Ultimate Netatmo Card",
+  "description": "Carte Lovelace personnalisée pour thermostat Netatmo, entièrement configurable.",
+  "type": "lovelace",
+  "render_readme": true,
+  "resources": [
+    {
+      "file": "dist/ultimate-netatmo-card.js",
+      "type": "module"
+    }
+  ]
+}
