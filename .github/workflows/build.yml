@@ -20,7 +20,10 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'   # ✅ maintenant possible grâce à package-lock.json
-
+          
+      - name: Update package-lock.json
+        run: npm install
+        
       - name: Install dependencies
         run: npm ci     # ✅ plus rapide et reproductible que npm install
 
