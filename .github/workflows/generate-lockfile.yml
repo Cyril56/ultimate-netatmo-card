@@ -1,0 +1,36 @@
+name: Generate Lockfile
+
+on:
+  workflow_dispatch:   # exécutable à la main depuis l'onglet Actions
+
+jobs:
+  generate-lockfile:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # nécessaire pour pouvoir pousser le lockfile
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # nécessaire pour push proprement
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies and generate lockfile
+        run: npm install --package-lock-only
+
+      - name: Commit package-lock.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: add/update package-lock.json [skip ci]" || echo "No changes to commit"
+
+      - name: Push changes
+        run: |
+          git push
