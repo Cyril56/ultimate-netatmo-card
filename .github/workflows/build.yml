@@ -12,30 +12,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Récupère ton code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Configure Node.js avec cache npm
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
 
-      # Installe les dépendances
       - name: Install dependencies
         run: npm install
 
-      # Compile avec Rollup (défini dans package.json)
       - name: Build project
         run: npm run build
 
-      # Vérifie que le fichier de sortie existe
-      - name: Check build output
+      - name: Show dist content
         run: ls -R dist
 
-      # Sauvegarde dist/ comme artefact (utile pour télécharger)
       - name: Upload dist files
         uses: actions/upload-artifact@v4
         with:
