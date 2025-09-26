@@ -5,7 +5,7 @@
   "render_readme": true,
   "resources": [
     {
-      "file": "dist/ultimate-netatmo-card.js",
+      "file": "ultimate-netatmo-card.js",
       "type": "module"
     }
   ]
