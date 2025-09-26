@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Version tag (e.g. v1.0.1)'
+        description: 'Version tag (e.g. v1.0.2)'
         required: true
         type: string
 
@@ -24,20 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Validate hacs.json
-        run: jq . hacs.json
-
       - name: Build with Rollup
         run: npm run build
 
-      - name: Upload compiled file to release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.event.inputs.tag }}
-          files: dist/ultimate-netatmo-card.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Copy compiled file to root
+        run: cp dist/ultimate-netatmo-card.js ./ultimate-netatmo-card.js
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
@@ -50,3 +41,4 @@ jobs:
           files: ultimate-netatmo-card.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
