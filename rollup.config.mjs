@@ -1,21 +1,21 @@
 import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import terser from "@rollup/plugin-terser";
+import { terser } from "rollup-plugin-terser";
 
 export default {
-  input: "src/ultimate-netatmo-card.ts",
+  input: "src/ultimate-netatmo-card.ts", // fichier d'entrée
   output: {
-    file: "dist/ultimate-netatmo-card.js",
-    format: "es",
-    sourcemap: true,
+    file: "dist/ultimate-netatmo-card.js", // fichier généré
+    format: "es",                          // module ES
+    sourcemap: true
   },
   plugins: [
     resolve(),
     commonjs(),
     typescript({
-      tsconfig: "./tsconfig.json",
+      tsconfig: "./tsconfig.json"
     }),
-    terser(),
-  ],
+    terser()
+  ]
 };
