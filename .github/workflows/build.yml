@@ -24,7 +24,10 @@ jobs:
 
       - name: Build with Rollup
         run: npm run build
-
+        
+      - name: Show compiled file content
+        run: cat dist/ultimate-netatmo-card.js || echo "File not found"
+        
       - name: List files after build
         run: ls -R
 
